@@ -1,0 +1,92 @@
+def create_set():
+    n = int(input("Enter the number of elements you want to insert: "))
+    s = set(int(input(f"Enter {i+1} number: ")) for i in range(n))
+    return s
+
+def insert_element(s):
+    ele = int(input("Enter the element you want to insert: "))
+    s.add(ele)
+    print(s)
+
+def search_element(s):
+    ele = int(input("Enter the element you want to search: "))
+    if ele in s:
+        print(f"{ele} is present.")
+    else:
+        print(f"{ele} is not present.")
+    print(s)
+
+def delete_element(s):
+    ele = int(input("Enter the element you want to delete: "))
+    try:
+        s.remove(ele)
+        print(f"{ele} is removed from the set.")
+    except KeyError:
+        print(f"The element {ele} is not found in the set.")
+    print(s)
+
+def set_size(s):
+    print("The size of the set is ", len(s))
+
+def perform_set_operation(set1, set2, operation):
+    if operation == 1:
+        print(f"Union of set {set1} and {set2}: ", set1.union(set2))
+    elif operation == 2:
+        print(f"Intersection of set {set1} and {set2}: ", set1.intersection(set2))
+    elif operation == 3:
+        print(f"Difference between set {set1} and {set2}: ", set1.difference(set2))
+    elif operation == 4:
+        if set2.issubset(set1):
+            print(f"Set {set2} is a subset of Set {set1}")
+        else:
+            print(f"Set {set2} is not a subset of Set {set1}")
+        if set1.issubset(set2):
+            print(f"\nSet {set1} is a subset of Set {set2}")
+        else:
+            print("\nSet {} is not a subset of Set {}".format(set1, set2))
+    else:
+        if set2.issubset(set1) and set2 != set1:
+            print(f"Set {set2} is a proper subset of set {set1}")
+        else:
+            print(f"Set {set2} is not a proper subset of set {set1}")
+        if set1.issubset(set2) and set1 != set2:
+            print(f"Set {set1} is a proper subset of set {set2}")
+        else:
+            print(f"Set {set1} is not a proper subset of set {set2}")
+
+def main():
+    s1 = create_set()
+    while True:
+        print("\nMenu")
+        print("1. Add an element to the set")
+        print("2. Search an element from the set")
+        print("3. Delete an element from the set")
+        print("4. Check the size of the set")
+        print("5. Display the union of two sets")
+        print("6. Display the intersection of two sets")
+        print("7. Display the difference between two sets")
+        print("8. Check whether one set is a subset of another or not")
+        print("9. Check whether one set is a proper subset of another or not")
+        print("0. Exit")
+
+        ch = int(input("Enter your choice: "))
+
+        if ch == 1:
+            insert_element(s1)
+        elif ch == 2:
+            search_element(s1)
+        elif ch == 3:
+            delete_element(s1)
+        elif ch == 4:
+            set_size(s1)
+        elif 5 <= ch <= 9:
+            print("Enter the data of second set:")
+            s2 = create_set()
+            perform_set_operation(s1, s2, ch)
+        elif ch == 0:
+            break
+        else:
+            print("Invalid Choice.")
+
+if __name__ == "__main__":
+    main()
