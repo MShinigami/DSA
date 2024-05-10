@@ -21,7 +21,7 @@ void prims(int n, vector<vector<int>>& cost){
         for(int i = 1; i<=n; ++i){
             if(visit[i]==1){
                 for(int j = 1; j<=n; ++j){
-                    if(visit[i]==0 && cost[i][j]!=-1 && min>cost[i][j]){
+                    if(visit[j]==0 && cost[i][j]!=-1 && min>cost[i][j]){
                         min =cost[i][j];
                         r =i;
                         c =j;
