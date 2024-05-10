@@ -101,6 +101,7 @@ int main() {
                 while (!pq.isEmpty()) {
                     patient p = pq.dequeue();
                     cout << "\nReleased Patient: " << p.name;
+                    break;
                 }
                 break;
             }
